@@ -27,6 +27,7 @@ pipeline {
             steps {
                 // archiveArtifacts artifacts: '**', followSymlinks: false
                 archiveArtifacts artifacts: '*.txt', followSymlinks: false
+                echo NODE_ENV
             }
         }
         stage('Stage with Secret') {
