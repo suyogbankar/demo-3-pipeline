@@ -30,8 +30,8 @@ pipeline {
         }
         stage('Stage with Secret') {
             steps {
-               withCredentials([string(credentialsId: 'mysecret', variable: 'production')]) {
-                echo  "${production}"
+               withCredentials([string(credentialsId: 'mysecret', variable: 'PRODUCTION_SECRET')]) {
+                echo  "${PRODUCTION_SECRET}"
                 }
             }
         }
