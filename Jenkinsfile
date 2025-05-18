@@ -14,10 +14,10 @@ pipeline {
                 sh 'cat file1.txt'
             }
         }
-    }
-    stage('node build') {
+        stage('node build') {
             steps {
                 sh 'npm install'
             }
         }
+    }
 }
