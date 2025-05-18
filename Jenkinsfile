@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    tools {nodejs "mynodejs"}
     stages {
         stage('Hello') {
             steps {
@@ -14,4 +15,9 @@ pipeline {
             }
         }
     }
+    stage('node build') {
+            steps {
+                sh 'npm install'
+            }
+        }
 }
