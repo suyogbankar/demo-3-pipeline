@@ -1,6 +1,9 @@
 pipeline {
     agent any
     tools {nodejs "mynodejs"}
+    environment: {
+        NODE_ENV = "production"
+    }
     stages {
         stage('Hello') {
             steps {
@@ -23,6 +26,13 @@ pipeline {
             steps {
                 // archiveArtifacts artifacts: '**', followSymlinks: false
                 archiveArtifacts artifacts: '*.txt', followSymlinks: false
+            }
+        }
+        stage('Stage with Secret') {
+            steps {
+               withCredentials([string(credentialsId: 'mysecret', variable: 'production')]) {
+                echo  "${production}"
+                }
             }
         }
     }
