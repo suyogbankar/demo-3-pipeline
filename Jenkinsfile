@@ -32,6 +32,9 @@ pipeline {
             steps {
                withCredentials([string(credentialsId: 'mysecret', variable: 'PRODUCTION_SECRET')]) {
                 echo  "${PRODUCTION_SECRET}"
+                script: {
+                    println "The secret value is : ${PRODUCTION_SECRET}"
+                }
                 }
             }
         }
