@@ -29,8 +29,8 @@ pipeline {
             steps {
                 // archiveArtifacts artifacts: '**', followSymlinks: false
                 archiveArtifacts artifacts: '*.txt', followSymlinks: false
-                // echo NODE_ENV
-                echo "${env.NODE_ENV}" // safer way to print env variable
+                echo NODE_ENV
+                // echo "${env.NODE_ENV}" // safer way to print env variable
             }
         }
         stage('Stage with Secret') {
