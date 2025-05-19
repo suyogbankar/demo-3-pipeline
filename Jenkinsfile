@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {nodejs "mynodejs"}
-    environment: {
+    environment {
         NODE_ENV = "production"
     }
     stages {
@@ -23,13 +23,14 @@ pipeline {
             }
         }
         stage('Save Artifacts') {
-            environment: {
+            environment {
                 NODE_ENV = "stage"
             }
             steps {
                 // archiveArtifacts artifacts: '**', followSymlinks: false
                 archiveArtifacts artifacts: '*.txt', followSymlinks: false
-                echo NODE_ENV
+                // echo NODE_ENV
+                echo "${env.NODE_ENV}" // safer way to print env variable
             }
         }
         stage('Stage with Secret') {
